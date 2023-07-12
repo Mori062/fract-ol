@@ -6,11 +6,12 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:17:59 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/12 13:14:26 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/12 14:16:15 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+#include "../libft/include/libft.h"
 #include <string.h>
 
 int	main(int argc, char **argv)
@@ -32,4 +33,3 @@ int	main(int argc, char **argv)
 		ft_printf("Usage: ./fractol [mandelbrot | julia | burningship]\n");
 	return (0);
 }
-
