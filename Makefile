@@ -1,7 +1,7 @@
 NAME = fractol
 
 SRC_PATH = srcs
-SRC = main.c 
+SRC = main.c mandelbrot.c
 SRCS = $(addprefix $(SRC_PATH)/, $(SRC))
 
 OBJ_PATH = obj
@@ -36,7 +36,7 @@ $(MLXS):
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCS)
 	mkdir -p $(OBJ_PATH)
-	$(CC) $(CFLAGS) -o $@ -c $< -I $(INC_PATH)
+	$(CC) $(CFLAGS) -o $@ -c $< -I $(INCS)
 
 clean:
 	make -C $(LIB_PATH) clean

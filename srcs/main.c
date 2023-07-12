@@ -6,20 +6,26 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:17:59 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/12 12:27:20 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/12 12:40:58 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "../includes/fractol.h"
 
 int	main(int argc, char **argv)
 {
-	(void)argv;
 	if (argc != 2)
 	{
-		write(1, "Error\n", 6);
+		ft_printf("Usage: ./fractol [mandelbrot | julia | burningship]\n");
 		return (0);
 	}
+	if (ft_strcmp(argv[1], "mandelbrot") == 0)
+		mandelbrot();
+	// else if (ft_strcmp(argv[1], "julia") == 0)
+	// 	julia();
+	// else if (ft_strcmp(argv[1], "burningship") == 0)
+	// 	burningship();
+	else
+		ft_printf("Usage: ./fractol [mandelbrot | julia | burningship]\n");
 	return (0);
 }

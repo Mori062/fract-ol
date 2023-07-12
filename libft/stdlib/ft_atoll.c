@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/12 12:45:15 by morishitash      ###   ########.fr       */
+/*   Created: 2023/07/12 12:53:52 by morishitash       #+#    #+#             */
+/*   Updated: 2023/07/12 12:54:04 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#include "../include/ft_string.h"
 
-# include "../libft/include/libft.h"
-# include "../minilibx-mac-osx/mlx.h"
-
-typedef struct s_mlx
+long long	ft_atoll(const char *str)
 {
-	void	*mlx;
-	void	*win;
-}				t_mlx;
+	long long	result;
+	int			sign;
 
-void	mandelbrot(void);
-
-#endif
+	result = 0;
+	sign = 1;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-')
+		sign = -sign;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (ft_isdigit(*str))
+		result = result * 10 + (*str++ - '0');
+	return (result * sign);
+}
