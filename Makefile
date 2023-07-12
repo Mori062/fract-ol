@@ -38,6 +38,9 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCS)
 	mkdir -p $(OBJ_PATH)
 	$(CC) $(CFLAGS) -o $@ -c $< -I $(INCS)
 
+norm:
+	norminette $(SRCS) $(INCS) $(LIB_PATH)
+
 clean:
 	make -C $(LIB_PATH) clean
 	make -C $(MLX_PATH) clean
@@ -49,4 +52,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all norm clean fclean re
