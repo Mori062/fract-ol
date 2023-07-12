@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:17:59 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/12 15:23:09 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/12 19:44:05 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static int	print_error(void)
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2)
+	if (argc != 3)
 		return (print_error());
 	if (ft_strcmp(argv[1], "mandelbrot") == 0)
-		mandelbrot();
+		mandelbrot(ft_atol(argv[2]));
 	else if (ft_strcmp(argv[1], "julia") == 0)
 		julia();
 	// else if (ft_strcmp(argv[1], "burningship") == 0)

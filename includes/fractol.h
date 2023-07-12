@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/12 16:45:31 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/12 19:44:53 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_mlx
 	void	*win;
 }				t_mlx;
 
-int		mandelbrot(void);
+int	mandelbrot(float max_iter);
 void	julia(void);
 
 #endif
