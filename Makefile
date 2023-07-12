@@ -1,7 +1,7 @@
 NAME = fractol
 
 SRC_PATH = srcs
-SRC = main.c mandelbrot.c
+SRC = main.c mandelbrot.c julia.c
 SRCS = $(addprefix $(SRC_PATH)/, $(SRC))
 
 OBJ_PATH = obj
@@ -16,17 +16,17 @@ LIB_PATH = libft
 LIB = libft.a
 LIBS = $(addprefix $(LIB_PATH)/, $(LIB))
 
-MLX_PATH = minilibx-mac-osx
+MLX_PATH = minilibx
 MLX = libmlx.a
 MLXS = $(addprefix $(MLX_PATH)/, $(MLX))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
 
 all: $(NAME)
 
 $(NAME): $(LIBS) $(MLXS) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS) $(MLXS) 
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS) $(MLXS) -framework OpenGL -framework AppKit
 
 $(LIBS):
 	make -C $(LIB_PATH)
