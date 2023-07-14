@@ -3,30 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:37:05 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/12 19:46:56 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/14 16:18:27 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+#include <stdio.h>
 
-
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
+}	t_data;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+}	t_mlx;
+
+typedef struct s_mandelbrot
+{
+	int	x;
+	int	y;
+	float	center_x;
+	float	center_y;
+}	t_mandelbrot;
+
+# define DPHEI 1000
+# define DPWID 1500
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 int	mandelbrot(float max_iter)
@@ -43,15 +60,15 @@ int	mandelbrot(float max_iter)
 	float	i;
 
 	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, 800, 600, "fractol");
-	img.img = mlx_new_image(mlx.mlx, 800, 600);
+	mlx.win = mlx_new_window(mlx.mlx, 1000, 1000, "fractol");
+	img.img = mlx_new_image(mlx.mlx, 1000, 1000);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-		&img.endian);
+			&img.endian);
 	x = 0;
-	while (x < 800)
+	while (x < 1000)
 	{
 		y = 0;
-		while (y < 600)
+		while (y < 1000)
 		{
 			zx = 0;
 			zy = 0;
@@ -66,7 +83,10 @@ int	mandelbrot(float max_iter)
 				i++;
 			}
 			if (i == max_iter)
+			{
 				my_mlx_pixel_put(&img, x, y, 0x000000);
+				printf("x = %d, y = %d\n", x, y);
+			}
 			else
 				my_mlx_pixel_put(&img, x, y, 0x0000FF * i / max_iter);
 			y++;
