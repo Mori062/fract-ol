@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:17:31 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/24 13:29:18 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/25 01:20:27 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,3 +83,5 @@
 // 	mlx_loop(mlx.mlx);
 // 	return (0);
 // }
+
+

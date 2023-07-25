@@ -21,6 +21,6 @@ $(NOM): $(OBJ)
 clean:
 	@ rm -f $(NOM) $(OBJ) *~
 	@ rm -f mlx_app
-	@echo "\033[31m[✘]\033[0m \033[1;34mCleaning mlx library...\033[0m"
+	@echo "\033[31m[✘]\033[0m \033[1;34mRemove minilibx object files...\033[0m"
 
 re: clean all

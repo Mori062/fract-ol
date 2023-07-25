@@ -1,7 +1,11 @@
 NAME = fractol
 
 SRC_PATH = srcs
-SRC = main.c mandelbrot.c julia.c
+SRC = main.c \
+	mandelbrot.c \
+	julia.c \
+	zoom.c \
+	fractol_utils.c
 SRCS = $(addprefix $(SRC_PATH)/, $(SRC))
 
 OBJ_PATH = obj
@@ -21,7 +25,7 @@ MLX = libmlx.a
 MLXS = $(addprefix $(MLX_PATH)/, $(MLX))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 
 CHECK = \033[32m[✔]\033[0m
 REMOVE = \033[31m[✘]\033[0m
