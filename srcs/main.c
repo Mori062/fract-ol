@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:17:59 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/25 21:39:36 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/26 12:27:17 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	valid_arg(int argc, char **argv)
 }
 
 
-void	visual_fractol(int flag, float x, float y, float scale)
+void	visual_fractol(int flag, float x, float y, double scale)
 {
 	t_data	data;
 
@@ -57,8 +57,8 @@ void	visual_fractol(int flag, float x, float y, float scale)
 	data.img = mlx_new_image(data.mlx, DPHEI, DPWID);
 	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel,
 			&data.line_length, &data.endian);
-	data.scale = 1;
 	data.flag = flag;
+	data.scale = scale;
 	if (flag == MANDELBROT)
 		mandelbrot(&data, data.scale);
 	// else if (flag == JULIA)

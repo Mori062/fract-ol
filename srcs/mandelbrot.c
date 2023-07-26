@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:37:05 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/25 21:38:15 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/26 14:40:20 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	mandelbrot(t_data *img, int zoom_scale)
+int	mandelbrot(t_data *img, float zoom_scale)
 {
 	double			x;
 	double			y;
@@ -34,8 +34,12 @@ int	mandelbrot(t_data *img, int zoom_scale)
 		y = 0;
 		while (y < DPWID)
 		{
-			img->cx = (x - DPWID / 2) * 4.0 / DPWID * zoom_scale;
-			img->cy = (y - DPHEI / 2) * 4.0 / DPWID * zoom_scale;
+			// img->cx = (x - DPWID / 2) * 4.0 / DPWID - 1;
+			// img->cy = (y - DPHEI / 2) * 4.0 / DPWID + 1;
+			img->cx = (x - DPHEI / 1.5) / DPHEI * 4.0 * zoom_scale;
+			img->cy = (y - DPWID / 2) / DPHEI * 4.0 * zoom_scale;
+			// printf("cx:%f cy:%f\n", img->cx, img->cy);
+			// exit(0);
 			img->c_re = 0;
 			img->c_im = 0;
 			img->tmp = 0;
@@ -47,7 +51,9 @@ int	mandelbrot(t_data *img, int zoom_scale)
 				img->c_re = img->tmp;
 				if (img->c_re * img->c_re + img->c_im * img->c_im < 4)
 				{
-					my_mlx_pixel_put(img, x, y, 0xFFFFFF / 50 * i);
+					my_mlx_pixel_put(img, x, y, color2rainbow(i));
+					// if (zoom_scale!=1)
+					 	// printf("zoom_scale:%d\n", zoom_scale);
 				}
 				i++;
 			}

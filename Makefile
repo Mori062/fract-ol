@@ -5,7 +5,8 @@ SRC = main.c \
 	mandelbrot.c \
 	julia.c \
 	zoom.c \
-	fractol_utils.c
+	fractol_utils.c \
+	color.c
 SRCS = $(addprefix $(SRC_PATH)/, $(SRC))
 
 OBJ_PATH = obj
