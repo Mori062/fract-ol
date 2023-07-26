@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/26 19:57:04 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/07/27 02:10:27 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/include/libft.h"
 # include "../minilibx/mlx.h"
+# include <math.h>
 
 # define DPHEI 1500
 # define DPWID 1000
@@ -22,18 +23,15 @@
 # define MANDELBROT 0
 # define JULIA 1
 
-
 typedef struct s_data
 {
-	double	cx;//中心座標
-	double	cy;//中心座標
+	double	cx;
+	double	cy;
+	double	scale;
 
-	double	scale;//倍率
-
-	double	c_re;//コマンドライン実部
-	double	c_im;//コマンドライン虚部
-	int		flag;//コマンドラインフラグ
-
+	double	c_re;
+	double	c_im;
+	int		flag;
 	double	tmp;
 
 	void	*mlx;
@@ -45,16 +43,24 @@ typedef struct s_data
 	int		endian;
 }		t_data;
 
+typedef struct s_color
+{
+	int		r;
+	int		g;
+	int		b;
+	double	h;
+	double	s;
+	double	v;
+}		t_color;
+
 void	visual_fractol(int flag, float x, float y, double scale);
-void julia(t_data *img, double c_re, double c_im, double zoom_scale);
+void	julia(t_data *img, double c_re, double c_im, double zoom_scale);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	mandelbrot(t_data *img, float zoom_scale);
 void	zoomed_fractol(float x, float y, double scale, t_data *data);
-int color2rainbow(int i);
-int	close_window_botton(t_data *img);
-int	close_window_esc(int keycode, t_data *img);
-int	mouse_hook(int mousecode, int x, int y, t_data *data);
-
-
+int		color2rainbow(int i);
+int		close_window_botton(t_data *img);
+int		close_window_esc(int keycode, t_data *img);
+int		mouse_hook(int mousecode, int x, int y, t_data *data);
 
 #endif

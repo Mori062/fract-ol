@@ -6,11 +6,11 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 00:33:46 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/25 13:36:30 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/27 02:09:02 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/fractol.h"
+#include "../includes/fractol.h"
 
 int	close_window_esc(int keycode, t_data *img)
 {

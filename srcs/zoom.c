@@ -3,33 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 01:18:27 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/26 19:03:12 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/07/27 01:56:31 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/fractol.h"
+#include "../includes/fractol.h"
 
 void	zoom_in(t_data *data)
 {
 	data->scale *= 0.9;
 	mlx_destroy_image(data->mlx, data->img);
-	// mlx_destroy_window(data->mlx, data->win);
-	// visual_fractol(data->flag, data->cx, data->cy, data->scale);
 	zoomed_fractol(data->c_re, data->c_im, data->scale, data);
-	// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }
 
 void	zoom_out(t_data *data)
 {
 	data->scale *= 1.1;
 	mlx_destroy_image(data->mlx, data->img);
-	// mlx_destroy_window(data->mlx, data->win);
-	// visual_fractol(data->flag, data->cx, data->cy, data->scale);
 	zoomed_fractol(data->c_re, data->c_im, data->scale, data);
-	// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }
 
 int	mouse_hook(int mousecode, int x, int y, t_data *data)

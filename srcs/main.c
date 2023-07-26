@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:17:59 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/26 18:51:18 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/07/27 02:11:17 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static int	print_error(void)
 {
 	write(2, "\x1b[31m", 5);
-	write(2, "Usage: ./fractol [mandelbrot | julia | burningship]\n", 58);
+	write(2, "Usage: ./fractol [mandelbrot | julia]\n", 38);
 	write(2, "\x1b[0m", 4);
 	return (1);
 }
