@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:37:05 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 02:08:47 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/27 18:10:41 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	mandelbrot(t_data *img, float zoom_scale)
 {
 	double			x;
 	double			y;
-	double			i;
+	int				i;
 
 	x = 0;
 	while (x < DPHEI)

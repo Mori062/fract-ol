@@ -6,20 +6,12 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:17:59 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/27 02:11:17 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/27 19:21:25 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 #include <stdio.h>
-
-static int	print_error(void)
-{
-	write(2, "\x1b[31m", 5);
-	write(2, "Usage: ./fractol [mandelbrot | julia]\n", 38);
-	write(2, "\x1b[0m", 4);
-	return (1);
-}
 
 int	valid_arg(int argc, char **argv)
 {
@@ -34,7 +26,8 @@ int	valid_arg(int argc, char **argv)
 	{
 		if (ft_strcmp(argv[1], "julia") == 0)
 		{
-			// float error hanndling needed!
+			if (ft_isdouble(argv[2]) == 1 || ft_isdouble(argv[3]) == 1)
+				return (print_error());
 			if (ft_atof(argv[2]) < -2.0 || ft_atof(argv[2]) > 2.0)
 				return (print_error());
 			if (ft_atof(argv[3]) < -2.0 || ft_atof(argv[3]) > 2.0)
@@ -49,7 +42,7 @@ int	valid_arg(int argc, char **argv)
 	return (0);
 }
 
-void	zoomed_fractol(float x, float y, double scale, t_data *data)
+void	zoomed_fractol(float x, float y, t_data *data)
 {
 	data->img = mlx_new_image(data->mlx, DPHEI, DPWID);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,

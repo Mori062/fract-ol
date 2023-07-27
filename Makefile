@@ -6,7 +6,8 @@ SRC = main.c \
 	julia.c \
 	zoom.c \
 	fractol_utils.c \
-	color.c
+	color.c \
+	error_msg.c
 SRCS = $(addprefix $(SRC_PATH)/, $(SRC))
 
 OBJ_PATH = obj
@@ -26,7 +27,7 @@ MLX = libmlx.a
 MLXS = $(addprefix $(MLX_PATH)/, $(MLX))
 
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 CHECK = \033[32m[✔]\033[0m
 REMOVE = \033[31m[✘]\033[0m

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/27 15:41:25 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/07/27 19:22:30 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 # include "../libft/include/libft.h"
 # include "../minilibx/mlx.h"
 # include <math.h>
+# include <stdio.h>
 
-# define DPHEI 1500
+# define DPHEI 1000
 # define DPWID 1000
 
 # define MANDELBROT 0
@@ -53,17 +54,12 @@ typedef struct s_color
 	double	v;
 }		t_color;
 
-typedef struct s_cache
-{
-	int	one;
-	
-}
-
+int		print_error(void);
 void	visual_fractol(int flag, float x, float y, double scale);
 void	julia(t_data *img, double c_re, double c_im, double zoom_scale);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	mandelbrot(t_data *img, float zoom_scale);
-void	zoomed_fractol(float x, float y, double scale, t_data *data);
+void	zoomed_fractol(float x, float y, t_data *data);
 int		color2rainbow(int i);
 int		close_window_botton(t_data *img);
 int		close_window_esc(int keycode, t_data *img);

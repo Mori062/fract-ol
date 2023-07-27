@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_utils.c                                    :+:      :+:    :+:   */
+/*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 00:33:46 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 18:10:48 by morishitash      ###   ########.fr       */
+/*   Created: 2023/07/27 18:11:28 by morishitash       #+#    #+#             */
+/*   Updated: 2023/07/27 18:12:16 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	close_window_esc(int keycode, t_data *img)
+int	print_error(void)
 {
-	if (keycode == 53)
-	{
-		mlx_destroy_window(img->mlx, img->win);
-		exit(0);
-	}
-	return (0);
-}
-
-int	close_window_botton(t_data *img)
-{
-	mlx_destroy_image(img->mlx, img->img);
-	exit(0);
+	write(2, "\x1b[31m", 5);
+	write(2, "Usage: ./fractol [mandelbrot | julia]\n", 38);
+	write(2, "\x1b[0m", 4);
+	return (1);
 }
