@@ -6,7 +6,7 @@
 /*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:37:05 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 20:43:48 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/07/27 21:04:38 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	mandelbrot(t_data *img, float zoom_scale)
 		{
 			mandelbrot_init(img, x, y, zoom_scale);
 			i = 0;
-			while (i < 50 * (1 / zoom_scale))
+			while (i < 50 * (0.6 / zoom_scale))
 			{
 				img->tmp = pow(img->cx, 2) - pow(img->cy, 2) + img->c_re;
 				img->cy = 2 * img->cx * img->cy + img->c_im;

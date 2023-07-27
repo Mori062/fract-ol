@@ -6,7 +6,7 @@
 /*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:17:31 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 20:33:11 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/07/27 21:06:38 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	julia(t_data *img, double c_re, double c_im, double zoom_scale)
 			img->c_re = c_re;
 			img->c_im = c_im;
 			i = 0;
-			while (i < 50 * (1 / zoom_scale))
+			while (i < 50 * (0.6 / zoom_scale))
 			{
 				julia_calculate(img);
 				if (img->cx * img->cx + img->cy * img->cy < 4)

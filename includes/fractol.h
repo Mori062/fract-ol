@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/27 19:22:30 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/27 21:27:33 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <math.h>
 # include <stdio.h>
 
-# define DPHEI 1000
+# define DPHEI 1500
 # define DPWID 1000
 
 # define MANDELBROT 0
@@ -53,6 +53,12 @@ typedef struct s_color
 	double	s;
 	double	v;
 }		t_color;
+
+typedef struct s_move
+{
+	double	x;
+	double	y;
+}		t_move;
 
 int		print_error(void);
 void	visual_fractol(int flag, float x, float y, double scale);

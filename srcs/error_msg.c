@@ -6,7 +6,7 @@
 /*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 18:11:28 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 20:31:34 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:58:20 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 int	print_error(void)
 {
-	write(2, "\x1b[31m", 5);
-	write(2, "Usage: ./fractol [mandelbrot | julia]\n", 38);
-	write(2, "\x1b[0m", 4);
+	ft_putstr_fd("\x1b[31m", 2);
+	ft_putendl_fd("Error : Invalid input", 2);
+	ft_putendl_fd("", 2);
+	ft_putendl_fd(" Usage : ./fractol mandelbrot", 2);
+	ft_putendl_fd("         ./fractol julia [number1] [number2]", 2);
+	ft_putendl_fd("", 2);
+	ft_putendl_fd("the number must be between -2 to 2", 2);
+	ft_putstr_fd("\x1b[0m", 2);
 	return (1);
 }
