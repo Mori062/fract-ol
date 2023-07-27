@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 01:18:27 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 19:22:07 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/27 20:31:21 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	mouse_hook(int mousecode, int x, int y, t_data *data)
 {
 	(void)x;
 	(void)y;
-	printf("data->scale = %f\n", data->scale);
 	if (mousecode == 4)
 		zoom_in(data);
 	if (mousecode == 5)

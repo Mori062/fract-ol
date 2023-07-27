@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:37:05 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 18:10:41 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/27 20:43:48 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	mandelbrot_init(t_data *img, double x, double y, float zoom_scale)
 {
 	img->cx = (x - DPHEI / 1.5) / DPHEI * 4.0 * zoom_scale;
 	img->cy = (y - DPWID / 2) / DPHEI * 4.0 * zoom_scale;
-	img->c_re = 0;
-	img->c_im = 0;
+	img->c_re = img->cx;
+	img->c_im = img->cy;
 	img->tmp = 0;
 }
 
@@ -46,10 +46,10 @@ void	mandelbrot(t_data *img, float zoom_scale)
 			i = 0;
 			while (i < 50 * (1 / zoom_scale))
 			{
-				img->tmp = pow(img->c_re, 2) - pow(img->c_im, 2) + img->cx;
-				img->c_im = 2 * img->c_re * img->c_im + img->cy;
-				img->c_re = img->tmp;
-				if (pow(img->c_re, 2) + pow(img->c_im, 2) < 4)
+				img->tmp = pow(img->cx, 2) - pow(img->cy, 2) + img->c_re;
+				img->cy = 2 * img->cx * img->cy + img->c_im;
+				img->cx = img->tmp;
+				if (pow(img->cx, 2) + pow(img->cy, 2) < 4)
 					my_mlx_pixel_put(img, x, y, color2rainbow(i));
 				i++;
 			}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 18:11:28 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 18:12:16 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/27 20:31:34 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
