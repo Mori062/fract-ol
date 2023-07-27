@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/27 02:10:27 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/27 15:41:25 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ typedef struct s_color
 	double	s;
 	double	v;
 }		t_color;
+
+typedef struct s_cache
+{
+	int	one;
+	
+}
 
 void	visual_fractol(int flag, float x, float y, double scale);
 void	julia(t_data *img, double c_re, double c_im, double zoom_scale);

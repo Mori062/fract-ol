@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 00:23:32 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 01:55:37 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/27 15:41:48 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
