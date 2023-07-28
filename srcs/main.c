@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:17:59 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/27 21:32:38 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/07/28 14:07:45 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	valid_arg(int argc, char **argv)
 	return (0);
 }
 
-void	zoomed_fractol(float x, float y, t_data *data)
+void	visual_fractol(float x, float y, t_data *data)
 {
-	data->img = mlx_new_image(data->mlx, DPHEI, DPWID);
+	data->img = mlx_new_image(data->mlx, DISPLAY_WIDTH, DISPLAY_HEIGHT);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
 			&data->line_length, &data->endian);
 	if (data->flag == MANDELBROT)
@@ -57,26 +57,16 @@ void	zoomed_fractol(float x, float y, t_data *data)
 	mlx_loop(data->mlx);
 }
 
-void	visual_fractol(int flag, float x, float y, double scale)
+void	make_display(int flag, float x, float y, double scale)
 {
 	t_data	data;
 
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, DPHEI, DPWID, "fract-ol");
-	data.img = mlx_new_image(data.mlx, DPHEI, DPWID);
-	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel,
-			&data.line_length, &data.endian);
+	data.win = mlx_new_window(data.mlx, DISPLAY_WIDTH,
+			DISPLAY_HEIGHT, "fract-ol");
 	data.flag = flag;
 	data.scale = scale;
-	if (flag == MANDELBROT)
-		mandelbrot(&data, data.scale);
-	else if (flag == JULIA)
-		julia(&data, x, y, data.scale);
-	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
-	mlx_mouse_hook(data.win, mouse_hook, &data);
-	mlx_hook(data.win, 17, 0L, close_window_botton, &data);
-	mlx_hook(data.win, 2, 1L << 0, close_window_esc, &data);
-	mlx_loop(data.mlx);
+	visual_fractol(x, y, &data);
 }
 
 int	main(int argc, char **argv)
@@ -84,9 +74,9 @@ int	main(int argc, char **argv)
 	if (valid_arg(argc, argv) == 1)
 		return (1);
 	if (ft_strcmp(argv[1], "mandelbrot") == 0)
-		visual_fractol(MANDELBROT, 0, 0, 1.0);
+		make_display(MANDELBROT, 0, 0, 1.0);
 	else if (ft_strcmp(argv[1], "julia") == 0)
-		visual_fractol(JULIA, ft_atof(argv[2]), ft_atof(argv[3]), 1.0);
+		make_display(JULIA, ft_atof(argv[2]), ft_atof(argv[3]), 1.0);
 	else
 		return (print_error());
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:37:05 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 21:04:38 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/07/28 14:14:49 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	mandelbrot_init(t_data *img, double x, double y, float zoom_scale)
 {
-	img->cx = (x - DPHEI / 1.5) / DPHEI * 4.0 * zoom_scale;
-	img->cy = (y - DPWID / 2) / DPHEI * 4.0 * zoom_scale;
+	img->cx = (x - DISPLAY_WIDTH / 1.5) / DISPLAY_WIDTH * 4.0 * zoom_scale;
+	img->cy = (y - DISPLAY_HEIGHT / 2) / DISPLAY_WIDTH * 4.0 * zoom_scale;
 	img->c_re = img->cx;
 	img->c_im = img->cy;
 	img->tmp = 0;
@@ -37,14 +37,14 @@ void	mandelbrot(t_data *img, float zoom_scale)
 	int				i;
 
 	x = 0;
-	while (x < DPHEI)
+	while (x < DISPLAY_WIDTH)
 	{
 		y = 0;
-		while (y < DPWID)
+		while (y < DISPLAY_HEIGHT)
 		{
 			mandelbrot_init(img, x, y, zoom_scale);
 			i = 0;
-			while (i < 50 * (0.6 / zoom_scale))
+			while (i < 50 * (0.5 / zoom_scale))
 			{
 				img->tmp = pow(img->cx, 2) - pow(img->cy, 2) + img->c_re;
 				img->cy = 2 * img->cx * img->cy + img->c_im;
