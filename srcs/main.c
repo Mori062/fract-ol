@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:17:59 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/28 14:07:45 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/28 14:23:11 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	visual_fractol(float x, float y, t_data *data)
 	mlx_loop(data->mlx);
 }
 
-void	make_display(int flag, float x, float y, double scale)
+void	make_display(int flag, float x, float y, float scale)
 {
 	t_data	data;
 

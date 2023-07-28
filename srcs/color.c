@@ -6,13 +6,13 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 00:23:32 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/28 13:46:51 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/28 14:22:11 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	value0to2(t_color *color, double f, int i)
+void	value0to2(t_color *color, float f, int i)
 {
 	if (i == 0)
 	{
@@ -34,7 +34,7 @@ void	value0to2(t_color *color, double f, int i)
 	}
 }
 
-void	value3to5(t_color *color, double f, int i)
+void	value3to5(t_color *color, float f, int i)
 {
 	if (i == 3)
 	{
@@ -58,7 +58,7 @@ void	value3to5(t_color *color, double f, int i)
 
 void	hsv2rgb(t_color *color)
 {
-	double	f;
+	float	f;
 	int		i;
 
 	i = (int)floor(color->h);

@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/28 14:07:06 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/28 14:22:08 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@
 
 typedef struct s_data
 {
-	double	cx;
-	double	cy;
-	double	scale;
+	float	cx;
+	float	cy;
+	float	scale;
 
-	double	c_re;
-	double	c_im;
+	float	c_re;
+	float	c_im;
 	int		flag;
-	double	tmp;
+	float	tmp;
 
 	void	*mlx;
 	void	*win;
@@ -49,19 +49,19 @@ typedef struct s_color
 	int		r;
 	int		g;
 	int		b;
-	double	h;
-	double	s;
-	double	v;
+	float	h;
+	float	s;
+	float	v;
 }		t_color;
 
 typedef struct s_move
 {
-	double	x;
-	double	y;
+	float	x;
+	float	y;
 }		t_move;
 
 int		print_error(void);
-void	julia(t_data *img, double c_re, double c_im, double zoom_scale);
+void	julia(t_data *img, float c_re, float c_im, float zoom_scale);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	mandelbrot(t_data *img, float zoom_scale);
 int		color2rainbow(int i);

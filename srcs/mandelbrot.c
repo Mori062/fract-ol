@@ -6,12 +6,11 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:37:05 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/28 14:14:49 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/28 14:30:36 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-#include <stdio.h>
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -21,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	mandelbrot_init(t_data *img, double x, double y, float zoom_scale)
+void	mandelbrot_init(t_data *img, float x, float y, float zoom_scale)
 {
 	img->cx = (x - DISPLAY_WIDTH / 1.5) / DISPLAY_WIDTH * 4.0 * zoom_scale;
 	img->cy = (y - DISPLAY_HEIGHT / 2) / DISPLAY_WIDTH * 4.0 * zoom_scale;
@@ -32,8 +31,8 @@ void	mandelbrot_init(t_data *img, double x, double y, float zoom_scale)
 
 void	mandelbrot(t_data *img, float zoom_scale)
 {
-	double			x;
-	double			y;
+	float			x;
+	float			y;
 	int				i;
 
 	x = 0;
@@ -44,7 +43,7 @@ void	mandelbrot(t_data *img, float zoom_scale)
 		{
 			mandelbrot_init(img, x, y, zoom_scale);
 			i = 0;
-			while (i < 50 * (0.5 / zoom_scale))
+			while (i < (30 / sqrt(zoom_scale)))
 			{
 				img->tmp = pow(img->cx, 2) - pow(img->cy, 2) + img->c_re;
 				img->cy = 2 * img->cx * img->cy + img->c_im;

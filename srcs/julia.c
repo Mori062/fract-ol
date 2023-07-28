@@ -6,13 +6,13 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:17:31 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/28 14:17:32 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/28 14:24:50 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	julia_init(t_data *img, double x, double y, float zoom_scale)
+void	julia_init(t_data *img, float x, float y, float zoom_scale)
 {
 	img->cx = (x - DISPLAY_WIDTH / 1.5) / DISPLAY_WIDTH * 4.0 * zoom_scale;
 	img->cy = (y - DISPLAY_HEIGHT / 2) / DISPLAY_WIDTH * 4.0 * zoom_scale;
@@ -26,11 +26,11 @@ void	julia_calculate(t_data *img)
 	img->cx = img->tmp;
 }
 
-void	julia(t_data *img, double c_re, double c_im, double zoom_scale)
+void	julia(t_data *img, float c_re, float c_im, float zoom_scale)
 {
-	double			x;
-	double			y;
-	double			i;
+	float			x;
+	float			y;
+	float			i;
 
 	x = 0;
 	while (x < DISPLAY_WIDTH)
@@ -42,7 +42,7 @@ void	julia(t_data *img, double c_re, double c_im, double zoom_scale)
 			img->c_re = c_re;
 			img->c_im = c_im;
 			i = 0;
-			while (i < 50 * (0.5 / zoom_scale))
+			while (i < 50 * (0.6 / zoom_scale))
 			{
 				julia_calculate(img);
 				if (img->cx * img->cx + img->cy * img->cy < 4)
