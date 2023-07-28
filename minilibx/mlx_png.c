@@ -15,24 +15,24 @@
 #include	"mlx_int.h"
 
 
-#define	PNG_MAGIC_SIZE	8
+#define PNG_MAGIC_SIZE 8
 unsigned char magic[PNG_MAGIC_SIZE] = {137, 80, 78, 71, 13, 10, 26, 10};
 #define PNG_HDR_SIZE	13
 
-#define	Z_CHUNK	32768
+#define Z_CHUNK 32768
 
-#define	ERR_MAGIC_SIZE	1
-#define	ERR_MAGIC_WRONG	2
-#define	ERR_STRUCT_INCOMPLETE	3
-#define	ERR_STRUCT_HDR	4
-#define	ERR_STRUCT_END	5
-#define	ERR_STRUCT_CRC	6
-#define	ERR_STRUCT_INCIMPL 7
-#define	ERR_STRUCT_DAT	8
-#define	ERR_STRUCT_MISSCHK	9
-#define	ERR_ZLIB	10
-#define	ERR_DATA_MISMATCH	11
-#define	ERR_DATA_FILTER	12
+#define ERR_MAGIC_SIZE 1
+#define ERR_MAGIC_WRONG	2
+#define ERR_STRUCT_INCOMPLETE	3
+#define ERR_STRUCT_HDR	4
+#define ERR_STRUCT_END	5
+#define ERR_STRUCT_CRC	6
+#define ERR_STRUCT_INCIMPL 7
+#define ERR_STRUCT_DAT	8
+#define ERR_STRUCT_MISSCHK	9
+#define ERR_ZLIB	10
+#define ERR_DATA_MISMATCH	11
+#define ERR_DATA_FILTER	12
 char *(mipng_err[]) =
 {
   "No error",
@@ -52,13 +52,13 @@ char *(mipng_err[]) =
 
 typedef struct png_info_s
 {
-  unsigned int	width;
-  unsigned int	height;
-  int		depth;
-  int		color;
-  int		interlace;
-  int		bpp;
-} png_info_t;
+  unsigned int  width;
+  unsigned int  height;
+  int           depth;
+  int           color;
+  int           interlace;
+  int           bpp;
+}      png_info_t;
 
 
 int	mipng_is_type(unsigned char *ptr, char *type)
