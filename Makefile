@@ -5,7 +5,7 @@ SRC = main.c \
 	mandelbrot.c \
 	julia.c \
 	zoom.c \
-	fractol_utils.c \
+	destroy_window.c \
 	color.c \
 	error_msg.c
 SRCS = $(addprefix $(SRC_PATH)/, $(SRC))

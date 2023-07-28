@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/28 14:22:08 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/28 14:44:05 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../libft/include/libft.h"
 # include "../minilibx/mlx.h"
 # include <math.h>
-# include <stdio.h>
 
 # define DISPLAY_WIDTH 1500
 # define DISPLAY_HEIGHT 1000
@@ -60,14 +59,28 @@ typedef struct s_move
 	float	y;
 }		t_move;
 
-int		print_error(void);
-void	julia(t_data *img, float c_re, float c_im, float zoom_scale);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	mandelbrot(t_data *img, float zoom_scale);
+// color.c
 int		color2rainbow(int i);
-int		close_window_botton(t_data *img);
+
+// destroy_window.c
 int		close_window_esc(int keycode, t_data *img);
+int		close_window_botton(t_data *img);
+
+// error_msg.c
+int		print_error(void);
+int		valid_arg(int argc, char **argv);
+
+// julia.c
+void	julia(t_data *img, float c_re, float c_im, float zoom_scale);
+
+// mandelbrot.c
+void	mandelbrot(t_data *img, float zoom_scale);
+
+// zoom.c
 int		mouse_hook(int mousecode, int x, int y, t_data *data);
+
+// main.c
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	visual_fractol(float x, float y, t_data *data);
 
 #endif

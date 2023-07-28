@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 00:23:32 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/28 14:22:11 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/28 14:39:48 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ void	hsv2rgb(t_color *color)
 		value3to5(color, f, i);
 }
 
-// come integer from 0 to 50
-// change to hsv color and return rgb color
 int	color2rainbow(int i)
 {
 	t_color	color;

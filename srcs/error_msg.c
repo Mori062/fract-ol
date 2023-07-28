@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 18:11:28 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/27 20:58:20 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/07/28 14:33:10 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+int	valid_arg(int argc, char **argv)
+{
+	if (argc == 2)
+	{
+		if (ft_strcmp(argv[1], "mandelbrot") == 0)
+			return (0);
+		else
+			return (print_error());
+	}
+	else if (argc == 4)
+	{
+		if (ft_strcmp(argv[1], "julia") == 0)
+		{
+			if (ft_isdouble(argv[2]) == 1 || ft_isdouble(argv[3]) == 1)
+				return (print_error());
+			if (ft_atof(argv[2]) < -2.0 || ft_atof(argv[2]) > 2.0)
+				return (print_error());
+			if (ft_atof(argv[3]) < -2.0 || ft_atof(argv[3]) > 2.0)
+				return (print_error());
+			return (0);
+		}
+		else
+			return (print_error());
+	}
+	else
+		return (print_error());
+	return (0);
+}
 
 int	print_error(void)
 {
