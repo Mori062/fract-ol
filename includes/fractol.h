@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/28 14:44:05 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/30 13:02:01 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "../minilibx/mlx.h"
 # include <math.h>
 
-# define DISPLAY_WIDTH 1500
-# define DISPLAY_HEIGHT 1000
+# define DISPLAY_WIDTH 500
+# define DISPLAY_HEIGHT 500
 
 # define MANDELBROT 0
 # define JULIA 1

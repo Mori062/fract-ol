@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 18:11:28 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/28 15:12:32 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/30 13:15:01 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ int	print_error(void)
 	ft_putendl_fd("Usage : ./fractol mandelbrot", 2);
 	ft_putendl_fd("        ./fractol julia [number1] [number2]", 2);
 	ft_putstr_fd("\033[1;34m", 2);
-	ft_putendl_fd("Tips : the numbers must be between -2 to 2.", 2);
+	ft_putendl_fd("Tips  : the numbers must be between -2 to 2.\n", 2);
+	ft_putendl_fd("Recomend :", 2);
+	ft_putendl_fd("        ./fractol julia 0 0.67", 2);
+	ft_putendl_fd("        ./fractol julia 0.116 0.66", 2);
 	ft_putstr_fd("\x1b[0m", 2);
 	return (1);
 }
