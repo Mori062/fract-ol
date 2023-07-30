@@ -39,6 +39,8 @@ all: $(NAME)
 $(NAME): $(LIBS) $(MLXS) $(OBJS)
 	@ $(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS) $(MLXS) -framework OpenGL -framework AppKit
 	@echo "$(CHECK) $(BLUE)Compiling fractol... $(RESET)"
+	@ chmod +x ./ascii
+	@ ./ascii
 
 $(LIBS):
 	@ make -C $(LIB_PATH)
