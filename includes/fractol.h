@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/08/03 11:06:24 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/08/03 11:10:26 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "../minilibx/mlx.h"
 # include <math.h>
 
-# define DISPLAY_WIDTH 500
-# define DISPLAY_HEIGHT 500
+# define DISPLAY_WIDTH 1000
+# define DISPLAY_HEIGHT 1000
 
 # define MANDELBROT 0
 # define JULIA 1
