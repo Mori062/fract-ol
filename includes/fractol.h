@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
+/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/30 13:02:01 by shmorish         ###   ########.fr       */
+/*   Updated: 2023/08/03 11:06:24 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
