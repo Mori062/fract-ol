@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:25:57 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/12 14:30:42 by morishitash      ###   ########.fr       */
+/*   Updated: 2024/02/26 10:13:42 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_ctype.h"
+#include "../includes/ft_ctype.h"
 
 int	ft_isspace(int c)
 {
-	return (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\v' || c == '\f' || c == '\r');
+	return (ft_isblank(c) || (10 <= c && c <= 13));
 }

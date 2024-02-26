@@ -6,13 +6,13 @@
 /*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 05:15:00 by shmorish          #+#    #+#             */
-/*   Updated: 2023/07/09 10:09:13 by shmorish         ###   ########.fr       */
+/*   Updated: 2024/02/26 03:02:10 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_stdio.h"
+#include "../includes/ft_stdio.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	return (write(fd, &c, 1));
 }

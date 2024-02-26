@@ -3,84 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 18:56:27 by shmorish          #+#    #+#             */
-/*   Updated: 2023/08/03 11:10:26 by morishitash      ###   ########.fr       */
+/*   Created: 2023/10/23 16:59:08 by morishitash       #+#    #+#             */
+/*   Updated: 2024/02/26 10:25:20 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
-# include "../libft/include/libft.h"
-# include "../minilibx/mlx.h"
 # include <math.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <stddef.h>
+# include <limits.h>
+# include <stdbool.h>
 
-# define DISPLAY_WIDTH 1000
-# define DISPLAY_HEIGHT 1000
+# include "../mlx/mlx.h"
+# include "../libft/includes/libft.h"
 
-# define MANDELBROT 0
-# define JULIA 1
+# include "check_arg.h"
+
+// print colors
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define MAGENTA "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define RESET "\033[0m"
+
+// check errors
+# define VALID 0
+# define INVALID 1
+
+# define MINILIBX_ERR "Minilibx error\n"
+
+# define WINDOW_WIDTH 720
+# define WINDOW_HEIGHT 720
 
 typedef struct s_data
 {
-	float	cx;
-	float	cy;
-	float	scale;
-
-	float	c_re;
-	float	c_im;
-	int		flag;
-	float	tmp;
-
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}		t_data;
-
-typedef struct s_color
-{
-	int		r;
-	int		g;
-	int		b;
-	float	h;
-	float	s;
-	float	v;
-}		t_color;
-
-typedef struct s_move
-{
-	float	x;
-	float	y;
-}		t_move;
-
-// color.c
-int		color2rainbow(int i);
-
-// destroy_window.c
-int		close_window_esc(int keycode, t_data *img);
-int		close_window_botton(t_data *img);
-
-// error_msg.c
-int		print_error(void);
-int		valid_arg(int argc, char **argv);
-
-// julia.c
-void	julia(t_data *img, float c_re, float c_im, float zoom_scale);
-
-// mandelbrot.c
-void	mandelbrot(t_data *img, float zoom_scale);
-
-// zoom.c
-int		mouse_hook(int mousecode, int x, int y, t_data *data);
-
-// main.c
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	visual_fractol(float x, float y, t_data *data);
+}	t_data;
 
 #endif

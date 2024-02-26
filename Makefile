@@ -1,71 +1,86 @@
 NAME = fractol
 
-SRC_PATH = srcs
-SRC = main.c \
-	mandelbrot.c \
-	julia.c \
-	zoom.c \
-	destroy_window.c \
-	color.c \
-	error_msg.c
-SRCS = $(addprefix $(SRC_PATH)/, $(SRC))
+SRC = main.c
 
-OBJ_PATH = obj
-OBJ = $(SRC:.c=.o)
-OBJS = $(addprefix $(OBJ_PATH)/, $(OBJ))
+CHECK_ARG_SRC = check_arg.c
 
-INC_PATH = includes
-INC = fractol.h
-INCS = $(addprefix $(INC_PATH)/, $(INC))
+SRCDIR = srcs
+SRCS = $(addprefix $(SRCDIR)/, $(SRC))
+SRCS += $(addprefix $(SRCDIR)/check_arg/, $(CHECK_ARG_SRC))
+MAKE_DIR = check_arg
 
-LIB_PATH = libft
-LIB = libft.a
-LIBS = $(addprefix $(LIB_PATH)/, $(LIB))
+OBJDIR = objs
+OBJS = $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.c=.o))
+DEPS = $(OBJS:.o=.d)
+MAKE_DIRS = $(addprefix $(OBJDIR)/, $(MAKE_DIR))
 
-MLX_PATH = minilibx
-MLX = libmlx.a
-MLXS = $(addprefix $(MLX_PATH)/, $(MLX))
+CFLAGS = -Wall -Wextra -Werror -MP -MMD -O3
+RM = rm -rf
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+INC = -I./includes/ -I./libft/includes -I./mlx
 
-CHECK = \033[32m[✔]\033[0m
-REMOVE = \033[31m[✘]\033[0m
-BLUE = \033[1;34m
-RESET = \033[0m
+LIBFT = libft/libft.a
 
-all: $(NAME)
+ifeq ($(MAKECMDGOALS), debug)
+	CFLAGS += -DDEBUG
+endif
 
-$(NAME): $(LIBS) $(MLXS) $(OBJS)
-	@ $(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS) $(MLXS) -framework OpenGL -framework AppKit
-	@echo "$(CHECK) $(BLUE)Compiling fractol... $(RESET)"
-	@ chmod +x ./ascii
-	@ ./ascii
+ifeq ($(MAKECMDGOALS), address)
+	CFLAGS += -g3 -fsanitize=address
+endif
 
-$(LIBS):
-	@ make -C $(LIB_PATH)
+CHECK		= \033[32m[✔]\033[0m
+REMOVE		= \033[31m[✘]\033[0m
+GENERATE	= \033[33m[➤]\033[0m
+BLUE		= \033[1;34m
+YELLOW		= \033[1;33m
+RESET		= \033[0m
 
-$(MLXS):
-	@ make -C $(MLX_PATH)
+TOTAL_FILES := $(shell echo $(words $(SRCS)))
+CURRENT_FILE = 1
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCS)
-	@ mkdir -p $(OBJ_PATH)
-	@ $(CC) $(CFLAGS) -o $@ -c $< -I $(INCS)
+define progress
+    @printf "$(GENERATE) $(YELLOW)Fractol obj file gen Progress: %3d%% (%d/%d)$(RESET)\r" $$(($(CURRENT_FILE)*100/$(TOTAL_FILES))) $(CURRENT_FILE) $(TOTAL_FILES)
+    @$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE)+1))))
+    @if [ $(CURRENT_FILE) -gt $(TOTAL_FILES) ]; then \
+        printf "$(GENERATE) $(YELLOW)Finish Generating Fractol Object files !%-50.50s\n$(RESET)"; \
+    fi
+endef
 
-norm:
-	norminette $(SRCS) $(INCS) $(LIB_PATH)
+all : $(NAME)
 
-clean:
-	@ make -C $(LIB_PATH) clean
-	@ make -C $(MLX_PATH) clean
-	@ rm -rf $(OBJ_PATH)
-	@echo "$(REMOVE) $(BLUE)Remove object files... $(RESET)"
+$(NAME): $(OBJS)
+	@ $(MAKE) -C ./libft
+	@ $(MAKE) -C ./mlx
+	@ $(CC) $(CFLAGS) -o $@ $^ $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit
+	@ printf "$(CHECK) $(BLUE)Compiling Fractol...%-50.50s\n$(RESET)"
 
-fclean: clean
-	@ make -C $(LIB_PATH) fclean
-	@ rm -rf $(NAME)
-	@echo "$(REMOVE) $(BLUE)Remove fractol... $(RESET)"
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@ mkdir -p $(MAKE_DIRS)
+	@ $(CC) $(CFLAGS) $(INC) -o $@ -c $<
+	$(call progress)
 
-re: fclean all
+clean :
+	@ $(MAKE) -C ./libft clean
+	@ $(MAKE) -C ./mlx clean
+	@ $(RM) $(OBJDIR)
+	@ echo "$(REMOVE) $(BLUE)Remove Fractol object files. $(RESET)"
 
-.PHONY: all norm clean fclean re
+fclean :
+	@ $(MAKE) -C ./libft fclean
+	@ $(MAKE) -C ./mlx fclean
+	@ $(RM) $(OBJDIR) $(NAME)
+	@ echo "$(REMOVE) $(BLUE)Remove Fractol object files and $(NAME). $(RESET)"
+
+re : fclean all
+
+debug : re
+
+address : re
+
+norm :
+	norminette srcs includes libft
+
+.PHONY : all clean fclean re debug norm address
+
+-include $(DEPS)

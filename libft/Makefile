@@ -1,60 +1,143 @@
-NAME = libft.a
+NAME          = libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+CC            = cc
+CFLAGS        = -Wall -Wextra -Werror
 
-INCLUDE = 'libft.h'
+INCLUDE       = ./includes
 
-CTYPE_SRCS = ctype/ft_isalnum.c ctype/ft_isalpha.c ctype/ft_isascii.c ctype/ft_isdigit.c \
-				ctype/ft_isprint.c ctype/ft_isspace.c ctype/ft_tolower.c ctype/ft_toupper.c \
-				ctype/ft_isdouble.c
+CTYPE_SRC     = ft_isalnum.c \
+				ft_isalpha.c \
+				ft_isascii.c \
+				ft_isblank.c \
+				ft_isdigit.c \
+				ft_isdouble.c \
+				ft_isint.c \
+				ft_islower.c \
+				ft_isnumber.c \
+				ft_isprint.c \
+				ft_isspace.c \
+				ft_isstrspace.c \
+				ft_isupper.c \
+				ft_tolower.c \
+				ft_toupper.c \
 
-LIST_SRCS = list/ft_lstadd_back.c list/ft_lstadd_front.c list/ft_lstclear.c list/ft_lstdelone.c \
-				list/ft_lstiter.c list/ft_lstlast.c list/ft_lstmap.c list/ft_lstnew.c list/ft_lstsize.c
+LIST_SRC      = ft_lstadd_back.c \
+				ft_lstadd_front.c \
+				ft_lstclear.c \
+				ft_lstdelone.c \
+				ft_lstiter.c \
+				ft_lstlast.c \
+				ft_lstmap.c \
+				ft_lstnew.c \
+				ft_lstsize.c
 
-STDIO_SRCS = stdio/ft_putchar_fd.c stdio/ft_putendl_fd.c stdio/ft_putnbr_fd.c stdio/ft_putstr_fd.c \
-				stdio/get_next_line/get_next_line.c stdio/get_next_line/get_next_line_utils.c \
-				  
-STDLIB_SRCS = stdlib/ft_atoi.c stdlib/ft_atol.c stdlib/ft_atoll.c stdlib/ft_calloc.c stdlib/ft_itoa.c \
-				stdlib/ft_atof.c
+STDIO_SRC     = ft_printf.c \
+				ft_putchar_fd.c \
+				ft_putendl_fd.c \
+				ft_putnbr_fd.c \
+				ft_putstr_fd.c \
+				ft_vdprintf.c \
+				get_next_line.c \
 
-STRING_SRCS = string/ft_bzero.c string/ft_memchr.c string/ft_memcmp.c string/ft_memcpy.c \
-				string/ft_memmove.c string/ft_memset.c string/ft_split.c string/ft_strchr.c string/ft_strcmp.c \
-				string/ft_strdup.c string/ft_strjoin.c string/ft_strlcat.c string/ft_strlcpy.c \
-				string/ft_strlen.c string/ft_strmapi.c string/ft_strncmp.c string/ft_strnstr.c \
-				string/ft_strrchr.c string/ft_strtrim.c string/ft_substr.c
+STDLIB_SRC    = ft_abs.c \
+				ft_atoi.c \
+				ft_atol.c \
+				ft_atoll.c \
+				ft_calloc.c \
+				ft_itoa.c \
+				ft_atof.c \
+				ft_strtol.c
 
-PRINTF_PATH = ./stdio/ft_printf
-PRINTF = libftprintf.a
+STRING_SRC    = ft_bzero.c \
+				ft_memchr.c \
+				ft_memcmp.c \
+				ft_memcpy.c \
+				ft_memmove.c \
+				ft_memset.c \
+				ft_split.c \
+				ft_strcat.c \
+				ft_strchr.c \
+				ft_strcmp.c \
+				ft_strcpy.c \
+				ft_strdup.c \
+				ft_striteri.c \
+				ft_strjoin.c \
+				ft_strlcat.c \
+				ft_strlcpy.c \
+				ft_strlen.c \
+				ft_strmapi.c \
+				ft_strncat.c \
+				ft_strncmp.c \
+				ft_strncpy.c \
+				ft_strndup.c \
+				ft_strnstr.c \
+				ft_strrchr.c \
+				ft_strstr.c \
+				ft_strtrim.c \
+				ft_substr.c
 
-SRCS = $(CTYPE_SRCS) $(LIST_SRCS) $(STDIO_SRCS) $(STDLIB_SRCS) $(STRING_SRCS)
+CTYPE_PATH    = ctype
+CTYPE_SRCS	  = $(addprefix $(CTYPE_PATH)/, $(CTYPE_SRC))
 
-OBJS = $(SRCS:.c=.o)
+LIST_PATH     = list
+LIST_SRCS	  = $(addprefix $(LIST_PATH)/, $(LIST_SRC))
+
+STDIO_PATH    = stdio
+STDIO_SRCS	  = $(addprefix $(STDIO_PATH)/, $(STDIO_SRC))
+
+STDLIB_PATH   = stdlib
+STDLIB_SRCS	  = $(addprefix $(STDLIB_PATH)/, $(STDLIB_SRC))
+
+STRING_PATH   = string
+STRING_SRCS	  = $(addprefix $(STRING_PATH)/, $(STRING_SRC))
+
+SRCS          = $(CTYPE_SRCS) \
+				$(LIST_SRCS) \
+				$(STDIO_SRCS) \
+				$(STDLIB_SRCS) \
+				$(STRING_SRCS)
+OBJS          = $(SRCS:.c=.o)
+
+CHECK		= \033[32m[✔]\033[0m
+REMOVE		= \033[31m[✘]\033[0m
+GENERATE	= \033[33m[➤]\033[0m
+BLUE		= \033[1;34m
+YELLOW		= \033[1;33m
+RESET		= \033[0m
+
+TOTAL_FILES := $(shell echo $(words $(SRCS)))
+CURRENT_FILE = 1
+
+define progress
+    @printf "$(GENERATE) $(YELLOW)Libft obj file gen Progress: %3d%% (%d/%d)$(RESET)\r" $$(($(CURRENT_FILE)*100/$(TOTAL_FILES))) $(CURRENT_FILE) $(TOTAL_FILES)
+    @$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE)+1))))
+    @if [ $(CURRENT_FILE) -gt $(TOTAL_FILES) ]; then \
+        printf "$(GENERATE) $(YELLOW)Finish Generating LIBFT Object files !%-50.50s\n$(RESET)"; \
+    fi
+endef
 
 all: $(NAME)
 
-CHECK = \033[32m[✔]\033[0m
-REMOVE = \033[31m[✘]\033[0m
-BLUE = \033[1;34m
-RESET = \033[0m
-
 $(NAME): $(OBJS)
-	@ make -C $(PRINTF_PATH)
-	@ mv $(PRINTF_PATH)/$(PRINTF) ./$(NAME)
 	@ ar rc $(NAME) $(OBJS)
-	@echo "$(CHECK) $(BLUE)Compiling libft...$(RESET)"
+	@ printf "$(CHECK) $(BLUE)Compiling libft...%-50.50s\n$(RESET)"
 
+# for Mac
 .c.o: $(OBJS)
 	@ $(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+	$(call progress)
+
+# for Ubuntu
+#  %.o: %.c $(INCLUDE)
+# 	@ $(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 clean:
-	@ make clean -C $(PRINTF_PATH)
 	@ $(RM) $(OBJS)
-	@echo "$(REMOVE) $(BLUE)Remove libft object files... $(RESET)"
+	@echo "$(REMOVE) $(BLUE)Remove libft object files. $(RESET)"
 
-fclean: clean
-	@ $(RM) $(NAME)
-	@ make fclean -C $(PRINTF_PATH)
-	@echo "$(REMOVE) $(BLUE)Remove $(NAME)$(RESET)"
+fclean:
+	@ $(RM) $(NAME) $(OBJS)
+	@echo "$(REMOVE) $(BLUE)Remove libft object files and $(NAME). $(RESET)"
 
 re: fclean all
 
